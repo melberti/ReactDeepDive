@@ -1,0 +1,1 @@
+import{a as e,o as t}from"./index-eYeP6qpm.js";var n={logo:`_logo_7b2ls_1`},r=e();function i(){return(0,r.jsx)(t,{to:`/`,children:(0,r.jsx)(`img`,{src:`/logo.png`,alt:`WorldWise logo`,className:n.logo})})}export{i as t};

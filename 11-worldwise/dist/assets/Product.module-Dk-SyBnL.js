@@ -1,0 +1,1 @@
+var e={product:`_product_1ijzm_1`};export{e as t};

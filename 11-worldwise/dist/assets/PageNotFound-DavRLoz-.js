@@ -1,0 +1,1 @@
+import{a as e}from"./index-eYeP6qpm.js";import{t}from"./PageNav-zjzyYmuT.js";var n=e();function r(){return(0,n.jsxs)(`div`,{children:[(0,n.jsx)(t,{}),(0,n.jsx)(`h1`,{children:`Page not found 😢`})]})}export{r as default};

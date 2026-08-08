@@ -1,0 +1,76 @@
+{
+  "cities": [
+    {
+      "cityName": "Toronto",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2026-06-02T19:33:43.081Z",
+      "notes": "",
+      "position": {
+        "lat": "43.71208095157617",
+        "lng": "-79.33921665065225"
+      },
+      "id": 98443198
+    },
+    {
+      "cityName": "Montreal",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2026-06-02T20:38:33.995Z",
+      "notes": "work trip",
+      "position": {
+        "lat": "45.512019692439694",
+        "lng": "-73.56597660066979"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Sevilla",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2017-11-02T22:22:44.000Z",
+      "notes": "OMG. Must see.",
+      "position": {
+        "lat": "37.38440449632291",
+        "lng": "-5.9875166751605295"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Tampa",
+      "country": "United States of America (the)",
+      "emoji": "🇺🇸",
+      "date": "2026-06-03T00:32:05.799Z",
+      "notes": "hot.",
+      "position": {
+        "lat": "27.93885318469342",
+        "lng": "-82.45610827832647"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Las Vegas",
+      "country": "United States of America (the)",
+      "emoji": "🇺🇸",
+      "date": "2026-06-03T00:39:38.213Z",
+      "notes": "way way back",
+      "position": {
+        "lat": "36.1480325786722",
+        "lng": "-115.1565841487487"
+      },
+      "id": 98443205
+    },
+    {
+      "cityName": "Dublin",
+      "country": "Ireland",
+      "emoji": "🇮🇪",
+      "date": "2026-06-03T00:45:59.252Z",
+      "notes": "gotta go back!",
+      "position": {
+        "lat": "53.351095382810335",
+        "lng": "-6.296398742464348"
+      },
+      "id": 98443206
+    }
+  ]
+}
