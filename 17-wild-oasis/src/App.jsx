@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import Users from "./pages/Users";
 import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,87 +34,89 @@ window.__TANSTACK_QUERY_CLIENT__ = queryClient;
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <GlobalStyles />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
+    <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyles />
+        <BrowserRouter>
+          <Routes>
             <Route
-              index
               element={
-                <Navigate
-                  replace
-                  to="/dashboard"
-                />
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
               }
+            >
+              <Route
+                index
+                element={
+                  <Navigate
+                    replace
+                    to="/dashboard"
+                  />
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
+              />
+              <Route
+                path="/bookings"
+                element={<Bookings />}
+              />
+              <Route
+                path="/booking/:bookingId"
+                element={<Booking />}
+              />
+              <Route
+                path="/checkin/:bookingId"
+                element={<CheckIn />}
+              />
+              <Route
+                path="/cabins"
+                element={<Cabins />}
+              />
+              <Route
+                path="/users"
+                element={<Users />}
+              />
+              <Route
+                path="/settings"
+                element={<Settings />}
+              />
+              <Route
+                path="/account"
+                element={<Account />}
+              />
+            </Route>
+            {/*  end of layout route */}
+            <Route
+              path="/login"
+              element={<Login />}
             />
             <Route
-              path="/dashboard"
-              element={<Dashboard />}
+              path="*"
+              element={<PageNotFound />}
             />
-            <Route
-              path="/bookings"
-              element={<Bookings />}
-            />
-            <Route
-              path="/booking/:bookingId"
-              element={<Booking />}
-            />
-            <Route
-              path="/checkin/:bookingId"
-              element={<CheckIn />}
-            />
-            <Route
-              path="/cabins"
-              element={<Cabins />}
-            />
-            <Route
-              path="/users"
-              element={<Users />}
-            />
-            <Route
-              path="/settings"
-              element={<Settings />}
-            />
-            <Route
-              path="/account"
-              element={<Account />}
-            />
-          </Route>
-          {/*  end of layout route */}
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="*"
-            element={<PageNotFound />}
-          />
-        </Routes>
-      </BrowserRouter>
-      <Toaster
-        position="top-center"
-        gutter="10"
-        containerStyle={{ margin: "8px" }}
-        toastOptions={{
-          success: { duration: 3000 },
-          error: { duration: 5000 },
-          style: {
-            fontSize: "16px",
-            maxWidth: "500px",
-            padding: "16px 24px",
-            backgroundColor: "var(--color-grey-1)",
-            color: "var(--color-grey-700)",
-          },
-        }}
-      />
-    </QueryClientProvider>
+          </Routes>
+        </BrowserRouter>
+        <Toaster
+          position="top-center"
+          gutter="10"
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: { duration: 3000 },
+            error: { duration: 5000 },
+            style: {
+              fontSize: "16px",
+              maxWidth: "500px",
+              padding: "16px 24px",
+              backgroundColor: "var(--color-grey-1)",
+              color: "var(--color-grey-700)",
+            },
+          }}
+        />
+      </QueryClientProvider>
+    </DarkModeProvider>
   );
 }
 

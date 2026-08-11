@@ -14,7 +14,7 @@ export async function getBooking(id) {
     throw new Error("Booking not found");
   }
 
-  return { data }; //data is now not just the recordset but also the error and isLoading property
+  return { data, error }; //data is now not just the recordset but also the error and isLoading property
 }
 
 //filter is an object that defines both a field and value to filter on
@@ -58,10 +58,14 @@ export async function getBookings(filter, sort, curPage) {
 }
 
 // Returns all BOOKINGS that are were created after the given date. Useful to get bookings created in the last 30 days, for example.
+//date must be ISO string
+//this method is concerned with CREATE date (sales)
 export async function getBookingsAfterDate(date) {
-  const { data, error } = await supabase.from("bookings").select("*"); //created_at, totalPrice, extrasPrice
-  //.gte("created_at", date)
-  //.lte("created_at", getToday({ end: true }));
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("created_at, totalPrice, extrasPrice")
+    .gte("created_at", date)
+    .lte("created_at", getToday({ end: true }));
 
   if (error) {
     console.error(error);
@@ -72,6 +76,7 @@ export async function getBookingsAfterDate(date) {
 }
 
 // Returns all STAYS that are were created after the given date
+//this method looks at start date (current stay/occupied room)
 export async function getStaysAfterDate(date) {
   const { data, error } = await supabase
     .from("bookings")

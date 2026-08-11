@@ -15,11 +15,13 @@ const LoginLayout = styled.main`
 
 function Login() {
   return (
-    <LoginLayout>
-      <Logo />
-      <Heading as="h4">Log In</Heading>
-      <LoginForm />
-    </LoginLayout>
+    <>
+      <LoginLayout>
+        <Logo />
+        <Heading as="h4">Log In</Heading>
+        <LoginForm />
+      </LoginLayout>
+    </>
   );
 }
 

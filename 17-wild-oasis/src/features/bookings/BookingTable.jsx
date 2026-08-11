@@ -1,7 +1,9 @@
 import Menus from "../../ui/Menus";
 import Pagination from "../../ui/Pagination";
+import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
 import BookingRow from "./BookingRow";
+import Empty from "../../ui/Empty";
 import { useBookings } from "./useBookings";
 
 function BookingTable() {
@@ -12,6 +14,10 @@ function BookingTable() {
   //keep it flexible!
 
   const { isLoading, error, bookings, count } = useBookings();
+
+  if (isLoading) return <Spinner />;
+
+  if (!bookings.length) return <Empty resourceName="bookings" />;
 
   return (
     <Menus>

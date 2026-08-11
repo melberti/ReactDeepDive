@@ -1,35 +1,42 @@
 import { useForm } from "react-hook-form";
+import { useSignUp } from "./useSignUp";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import SpinnerMin from "../../ui/SpinnerMini";
 
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
+  const { signUp, isLoading } = useSignUp();
 
-  function onFormSubmit() {
-    console.log(data);
+  //function onFormSubmit(data) {
+  function onFormSubmit({ fullName, email, password }) {
+    //no validaiton required since we are validating below with required fields etc
+    //console.log(data);
+    signUp({ fullName, email, password }, { onSettled: reset() });
   }
 
   return (
     <Form onSubmit={handleSubmit(onFormSubmit)}>
       <FormRow
         label="Full name"
-        error={""}
+        error={errors?.fullName?.message}
       >
         <Input
           type="text"
           id="fullName"
           {...register("fullName", { required: "Required" })}
+          disabled={isLoading}
         />
       </FormRow>
 
       <FormRow
         label="Email address"
-        error={""}
+        error={errors?.email?.message}
       >
         <Input
           type="email"
@@ -38,12 +45,13 @@ function SignupForm() {
             required: "Required",
             pattern: { value: /\S+@\S+\.\S+/, message: "Invalid email" },
           })}
+          disabled={isLoading}
         />
       </FormRow>
 
       <FormRow
         label="Password (min 8 characters)"
-        error={""}
+        error={errors?.password?.message}
       >
         <Input
           type="password"
@@ -52,12 +60,13 @@ function SignupForm() {
             required: "Required",
             minLength: { value: 8, message: "Must be at least 8 characters" },
           })}
+          disabled={isLoading}
         />
       </FormRow>
 
       <FormRow
         label="Repeat password"
-        error={""}
+        error={errors?.passwordConfirm?.message}
       >
         <Input
           type="password"
@@ -67,6 +76,7 @@ function SignupForm() {
             validate: (value) =>
               value === getValues().password || "Repeat password not matched",
           })}
+          disabled={isLoading}
         />
       </FormRow>
 
@@ -75,10 +85,14 @@ function SignupForm() {
         <Button
           variation="secondary"
           type="reset"
+          disabled={isLoading}
+          onClick={reset}
         >
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button disabled={isLoading}>
+          {isLoading ? <SpinnerMini /> : "Create new user"}
+        </Button>
       </FormRow>
     </Form>
   );

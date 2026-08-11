@@ -91,6 +91,10 @@ function Toggle({ id }) {
   const { openId, open, close, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
+    //prevent event from travelling up the DOM; honestly don't understand this so well
+    //also had to add false parameter to the useOutsideClick function call below.
+    e.stopPropagation();
+
     const rect = e.target.closest("button").getBoundingClientRect();
 
     const pos = {
@@ -113,7 +117,7 @@ function List({ id, children }) {
   const { openId, position } = useContext(MenusContext);
 
   const { close } = useContext(MenusContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
 
   if (id !== openId) return null;
 
