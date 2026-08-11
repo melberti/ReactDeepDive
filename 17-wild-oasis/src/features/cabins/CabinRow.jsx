@@ -120,7 +120,7 @@ function CabinRow({ cabin }) {
               <ConfirmDelete
                 resource="cabin"
                 onConfirm={() => deleteCabin(cabinId)}
-                disabled={isDeleting}
+                disabled={isWorking}
               />
             </Modal.Window>
             <Modal.Window name="dupe-cabin">
@@ -137,7 +137,7 @@ function CabinRow({ cabin }) {
                     description: description,
                   })
                 }
-                disabled={isCreating}
+                disabled={isWorking}
               />
             </Modal.Window>
           </Modal>
