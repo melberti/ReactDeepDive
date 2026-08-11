@@ -1,2 +1,2 @@
-<h1>Udemy Ultimate React Course 2025: React, Next.js, Redux & More</h1>
-<h3>Projects associated with the course</h3>
+<h3>Udemy Ultimate React Course 2025: React, Next.js, Redux & More</h3>
+<p>Projects associated with the course</p>
